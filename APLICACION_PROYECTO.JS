@@ -6,8 +6,8 @@ function calcularSubtotal(precio, cantidad){
 function aplicarDescuento(total,descuento){
     return total - descuento;
 }
-function costoEnvio (total, envio){
-    return total + envio;
+function costoEnvio (total, envioDomicilio){
+    return total + envioDomicilio;
 }
 console.log("multiplicar(3.500, 5)");
 console.log("restar(3.500, 20%)");
