@@ -67,8 +67,25 @@ tecla.addEventListener("keydown", function(event){
 });
 
 
-//
+//EVENTO DE CARGA
 
 function cargarPagina(){
     alert("se ha cargado la pagina completa !!");
 }
+
+// PROPAGACION DE EVENTOS: ORDEN DE EJECUSION DE LOS EVENTOS
+
+let miDiv = document.getElementById("miDiv");
+let miP = document.getElementById("miP");
+
+//lister para parrafo
+
+miP.addEventListener("click", function(){
+    alert("hiciste click en la parrafo <p>");
+},true);
+
+// lister para el div contenedor
+
+miDiv. addEventListener("click", function(){
+    alert("hiciste click en el contentenedor <div>");
+}, true); // bubbling: evento interno a el externo
