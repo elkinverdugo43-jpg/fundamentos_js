@@ -1,46 +1,113 @@
-//selecionar elementos del dom
-
+// SELECCIONAR ELEMENTOS DEL DOM
 
 const entrada = document.getElementById("entrada");
 const boton = document.getElementById("btnAgregar");
 const lista = document.getElementById("lista");
 const contador = document.getElementById("contador");
-let total =0;
 
-boton.addEventListener("click",  function(){
+let total = 0;
+let nombres = [];
+
+// AGREGAR APRENDICES A LA LISTA
+
+boton.addEventListener("click", function () {
+
     const nombre = entrada.value.trim();
-})
 
-if(nombre === ""){
-    alert("Escriba un nombre");
-    return;
-}
+    // VALIDAR CAMPO VACIO
 
-const li = document.createElement("li");
-li.textContent = nombre;
-lista.appendChild(li);
+    if (nombre === "") {
+        alert("Escriba un nombre");
+        return;
+    }
 
+    // EVITAR NOMBRES REPETIDOS
 
-total++;
-contador.textContent = "Aprendices: " + total;
-entrada.value = "";
-entrada.focus();
+    if (nombres.includes(nombre.toLowerCase())) {
+        alert("Este aprendiz ya está en la lista");
+        return;
+    }
 
-//FILTRADO DINAMICO JAVASCRIPT
+    nombres.push(nombre.toLowerCase());
 
-let filterinput = document.getElementById("filterinput");
-let listafiltrada = document.getElementById("lista");
+    // CREAR ELEMENTO DE LA LISTA
 
-filterinput.addEventListener("keyup"), function(){
-    let term = filterinput.value.tolowerCase(); //convertit el texto en minusculas
+    const li = document.createElement("li");
 
-    let items = listafiltrada.getAttributeNames("li"); // capture todos lo <li>
+    const texto = document.createElement("span");
+    texto.textContent = nombre;
 
-    Array.from(items).forEach(function(item){
-        if(item.textContent.tolowerCase().indexOF(term) !== -1){
-            item.style.display = "block";
-        }else {
+    // TACHAR NOMBRE AL HACER CLIC
+
+    texto.addEventListener("click", function () {
+        li.classList.toggle("tachado");
+    });
+
+    // CREAR BOTON ELIMINAR
+
+    const eliminar = document.createElement("button");
+    eliminar.textContent = "Eliminar";
+
+    eliminar.addEventListener("click", function () {
+
+        const posicion = nombres.indexOf(nombre.toLowerCase());
+
+        if (posicion !== -1) {
+            nombres.splice(posicion, 1);
+        }
+
+        li.remove();
+
+        total--;
+        contador.textContent = "Aprendices: " + total;
+    });
+
+    // AGREGAR ELEMENTOS A LA LISTA
+
+    li.appendChild(texto);
+    li.appendChild(eliminar);
+    lista.appendChild(li);
+
+    // ACTUALIZAR CONTADOR
+
+    total++;
+    contador.textContent = "Aprendices: " + total;
+
+    entrada.value = "";
+    entrada.focus();
+
+});
+
+// CONTAR CARACTERES EN TIEMPO REAL
+
+const caracteres = document.getElementById("caracteres");
+
+entrada.addEventListener("input", function () {
+
+    caracteres.textContent = entrada.value.length + " caracteres";
+
+});
+
+// FILTRADO DINAMICO JAVASCRIPT
+
+const filterinput = document.getElementById("filterInput");
+
+filterinput.addEventListener("keyup", function () {
+
+    const term = filterinput.value.toLowerCase();
+
+    const items = lista.querySelectorAll("li");
+
+    items.forEach(function (item) {
+
+        const nombre = item.querySelector("span").textContent.toLowerCase();
+
+        if (nombre.includes(term)) {
+            item.style.display = "";
+        } else {
             item.style.display = "none";
         }
-    }) 
+
+    });
+
 });

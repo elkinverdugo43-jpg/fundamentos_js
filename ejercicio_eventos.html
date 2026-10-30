@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Aprendices</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tachado {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+
 </head>
 <body>
-    <h1>Ejecicio de Eventos: Lista de Aprendices</h1>
+
+    <h1>Ejercicio de Eventos: Lista de Aprendices</h1>
 
     <input type="text" id="entrada" placeholder="Nombre del aprendiz">
     <button id="btnAgregar">Agregar</button>
+    <p id="caracteres">0 caracteres</p>
+
     <p id="contador">Aprendices: 0</p>
 
-    <input type="text" id="filterInput" placeholder="filtrar items">
+    <input type="text" id="filterInput" placeholder="Filtrar aprendices">
+
     <ul id="lista"></ul>
 
-
     <script src="ejercicion_eventos.js"></script>
+
 </body>
 </html>

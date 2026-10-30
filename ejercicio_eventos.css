@@ -1,0 +1,56 @@
+* CONFIGURACION GENERAL */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 30px;
+}
+
+h1 {
+    color: #2e7d32;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    background-color: white;
+    padding: 12px;
+    margin: 8px 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.tachado {
+    text-decoration: line-through;
+    color: gray;
+}
